@@ -10,7 +10,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 public class Conex {
     DadosApp dado;
  //  private static String HOST = "localhost";
-    private static String HOST= "";
+    private static String HOST= "192.168.1.8";
     private static int PUERTO = 28197;
     Socket socket;
     DataOutputStream mensaje;
