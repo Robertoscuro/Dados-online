@@ -1,10 +1,11 @@
 package com.rol.robert.dados;
 
+import android.view.View;
+
 import java.io.IOException;
 
 public class Menu {
     Dados dado;
- //   GestorIO gestorIO;
     Conex con;
 
     public Menu() {
@@ -49,68 +50,20 @@ public class Menu {
         }
         return x;
     }
-    public void mandarTirada ( int y, String n){
-        con = new Conex();
-        con.run(y, n);
+    public void mandarTirada (int y, String n, View view,DadosApp dado){
+        con = new Conex(dado);
+        con.duelo(y, n,view);
     }
-   /* public void iniciar() throws InterruptedException, IOException {
-        int x, y;
-        int op;
-        String n;
-        while (true) {
-            op = gestorIO.leerInt("\nEscriba que desea hacer(1 duelo, 2 tirada simple,3 ver tirada simple,4 offline, 0 salir): ");
-            if (op == 1) {
-                n = gestorIO.leerString("\nIntroduzca el nombre del jugador: ");
-                x = gestorIO.leerInt("Escriba el dado que desea lanzar: ");
-                y = this.Opciones(x);
-                gestorIO.escribir("Su resultado es: " + y);
-                this.mandarTirada(y, n);
-            } else if (op == 2) {
-                n = gestorIO.leerString("\nIntroduzca el nombre del jugador: ");
-                x = gestorIO.leerInt("Escriba el dado que desea lanzar: ");
-                y = this.Opciones(x);
-                gestorIO.escribir("Su resultado es: " + y);
-                this.mandarTiradaSimple(y,n);
-
-            } else if (op == 3) {
-                con.ver();
-            } else if (op == 4) {
-                x = gestorIO.leerInt("Escriba el dado que desea lanzar: ");
-                y = this.Opciones(x);
-                gestorIO.escribir("Su resultado es: " + y);
-            } else {
-                return;
-            }
-       /* int x;
-        String n;
-        n=gestorIO.leerString("\nIntroduzca el nombre del jugador: ");
-        while (true){
-
-            x=gestorIO.leerInt("\nEscriba el dado que desea lanzar: ");
-            if(x==0){
-                return;
-            }
-            else
-                this.Opciones(x,n);
-        }
-
-        /*
-        int x;
-        x=gestorIO.leerInt("Escriba el dado que desea lanzar(1 tirada normal): ");
-      //  Thread.sleep(125);
-        gestorIO.escribir("Su resultado es: ");
-      //  Thread.sleep(125);
-        System.out.println(this.Opciones(x));
 
 
-        }
+    public void mandarTiradaSimple(int y,String n,DadosApp dado){
+        con = new Conex(dado);
 
-
-
-    }*/
-
-    private void mandarTiradaSimple(int y,String n) throws IOException {
         con.simple(y,n);
+    }
+    public void verTirada(DadosApp dado){
+        con = new Conex(dado);
+        con.ver();
     }
 }
 

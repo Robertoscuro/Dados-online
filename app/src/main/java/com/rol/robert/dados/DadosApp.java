@@ -22,52 +22,31 @@ public class DadosApp extends AppCompatActivity {
         r=(TextView)findViewById(R.id.Resultado);
         j=(EditText)findViewById(R.id.Nombre);
         m=(TextView)findViewById(R.id.master);
-    }
-  /*  private int opciones(View view) throws IOException {
-        menu = new Menu();
-        int x=0;
-        switch (view.getId()){
-            case R.id.Dado4:
-                x=menu.Opciones(4);
-                break;
-            case R.id.Dado6:
-                x= menu.Opciones(6);
-                break;
-            case R.id.Dado8:
-                x= menu.Opciones(8);
-                break;
-            case R.id.Dado10:
-                x= menu.Opciones(10);
-                break;
-            case R.id.Dado12:
-                x= menu.Opciones(12);
-                break;
 
-            case R.id.Dado20:
-                x= menu.Opciones(20);
-                break;
-            case R.id.Dado30:
-                x= menu.Opciones(30);
-                break;
-            case R.id.Dado100:
-                x= menu.Opciones(100);
-                break;
-
-        }
-        return x;
     }
-*/
+
     public void Duelo(View view) throws IOException, InterruptedException {
         menu = new Menu();
         String n;
-        String resultado;
-       // Thread.sleep(2000);
-        resultado = String.valueOf(this.x);
-//        r.setText(resultado);
         n=this.nombre(view);
 
-        menu.mandarTirada(this.x,n);
+        menu.mandarTirada(this.x,n,view,this);
 
+    }
+
+    public void Simple(View view) {
+        menu = new Menu();
+        String n;
+        n=this.nombre(view);
+       menu.mandarTiradaSimple(this.x,n,this);
+        String resultado = String.valueOf(this.x);
+        r.setText("Mi resultado es: "+resultado);
+
+    }
+
+    public void Ver(View view){
+        menu = new Menu();
+        menu.verTirada(this);
     }
     public String nombre(View view){
         String n;
@@ -115,10 +94,17 @@ public class DadosApp extends AppCompatActivity {
     public void offline(View view) throws InterruptedException {
        // Thread.sleep(2000);
         String resultado = String.valueOf(this.x);
-        r.setText(resultado);
+        r.setText("Mi resultado es: "+resultado);
     }
 
-    public void master(String recibido) {
-        m.setText(recibido);
+    public void master(String[] recibido, View view) {
+        m.setText(recibido[0]);
+        String resultado = String.valueOf(this.x);
+        r.setText("Mi resultado es: "+resultado);
+    }
+
+    public void mostrar(String s) {
+        m.setText(s);
+        r.setText("Resultado");
     }
 }

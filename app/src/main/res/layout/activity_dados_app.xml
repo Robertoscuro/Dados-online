@@ -25,6 +25,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
         android:text="Tirada simple"
+        android:onClick="Simple"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Duelo" />
 
@@ -35,6 +36,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
         android:text="Ver Tirada"
+        android:onClick="Ver"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Tirada_Simple" />
 
